@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Junctions to binaries references for the csproj
+GameBinaries
+TorchBinaries
+NexusBinaries
