@@ -28,7 +28,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -181,4 +181,10 @@
     <Folder Include="HangarMarket\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      xcopy /y /d "$(ProjectDir)manifest.xml" "$(ProjectDir)$(OutDir)"
+      powershell Compress-Archive -Path "$(ProjectDir)$(OutDir)*" -DestinationPath "$(ProjectDir)$(OutDir)QuantumHangar.zip" -Force
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
